@@ -1,0 +1,39 @@
+# IDE
+.idea/
+.vscode/
+*.DotSettings.user
+*.suo
+*.user
+
+# Build outputs (todas as soluções/projetos)
+**/bin/
+**/obj/
+**/[Tt]est[Rr]esults/
+**/[Ll]og/
+
+# Static Web Assets gerados
+**/staticwebassets/
+**/staticwebassets.*.json
+**/scopedcss/
+
+# NuGet
+*.nupkg
+*.snupkg
+**/project.assets.json
+**/project.nuget.cache
+**/*.nuget.g.props
+**/*.nuget.g.targets
+artifacts/
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Docker / envs (descomente se não quiser versionar suas variáveis)
+# .env
+# **/*.env
+
+# Rider/MSBuild caches
+*.cache
+*.ide/
+*.ide.*

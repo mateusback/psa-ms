@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "psa-legacy-sis", "psa-legacy-sis\psa-legacy-sis.csproj", "{3A73F15D-A642-493B-99BA-2CF7577A9C3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "psa-legacy-sis.Database", "psa-legacy-sis.Database\psa-legacy-sis.Database.csproj", "{A501BB39-3E50-4373-AADF-1A00521A365E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "psa-legacy-sis.Domain", "psa-legacy-sis.Domain\psa-legacy-sis.Domain.csproj", "{279C1D19-253F-4CAC-AAE4-0D5DE9265DC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A73F15D-A642-493B-99BA-2CF7577A9C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A73F15D-A642-493B-99BA-2CF7577A9C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A73F15D-A642-493B-99BA-2CF7577A9C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A73F15D-A642-493B-99BA-2CF7577A9C3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A501BB39-3E50-4373-AADF-1A00521A365E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A501BB39-3E50-4373-AADF-1A00521A365E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A501BB39-3E50-4373-AADF-1A00521A365E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A501BB39-3E50-4373-AADF-1A00521A365E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{279C1D19-253F-4CAC-AAE4-0D5DE9265DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279C1D19-253F-4CAC-AAE4-0D5DE9265DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279C1D19-253F-4CAC-AAE4-0D5DE9265DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279C1D19-253F-4CAC-AAE4-0D5DE9265DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

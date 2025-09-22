@@ -1,0 +1,108 @@
+﻿@page "/customers/register"
+@using psa_legacy_sis.Domain
+@using psa_legacy_sis.Domain.Repositories
+@inject ICustomerRepository CustomerRepository
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-person-plus me-2"></i>
+                        Registrar Cliente
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="Model" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit" FormName="CustomerForm" Enhance>
+                        <DataAnnotationsValidator />
+                        <ValidationSummary class="text-danger mb-3" />
+                        
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="bi bi-person me-2"></i>Nome Completo
+                            </label>
+                            <InputText @bind-Value="Model.Name" class="form-control" placeholder="Digite o nome completo" />
+                            <ValidationMessage For="@(() => Model.Name)" class="text-danger" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="bi bi-envelope me-2"></i>Email
+                            </label>
+                            <InputText @bind-Value="Model.Email" class="form-control" placeholder="Digite o email" />
+                            <ValidationMessage For="@(() => Model.Email)" class="text-danger" />
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" disabled="@isSubmitting">
+                                @if (isSubmitting)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                    <text>Registrando...</text>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-check-circle me-2"></i>
+                                    <text>Registrar Cliente</text>
+                                }
+                            </button>
+                        </div>
+                    </EditForm>
+                    
+                    @if (!string.IsNullOrEmpty(successMessage))
+                    {
+                        <div class="alert alert-success mt-3">
+                            <i class="bi bi-check-circle-fill me-2"></i>@successMessage
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger mt-3">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>@errorMessage
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    public Customer Model { get; set; } = new();
+    
+    private string? successMessage;
+    private string? errorMessage;
+    private bool isSubmitting = false;
+
+    private async Task HandleValidSubmit(EditContext editContext)
+    {
+        if (isSubmitting) return;
+        
+        isSubmitting = true;
+        successMessage = null;
+        errorMessage = null;
+        
+        try
+        {
+            var response = await CustomerRepository.AddAsync(Model);
+            successMessage = $"Cliente '{response.Name}' registrado com sucesso!";
+            Model = new Customer();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erro ao registrar cliente: {ex.Message}";
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+    
+    private Task HandleInvalidSubmit()
+    {
+        errorMessage = "Por favor, corrija os erros no formulário antes de continuar.";
+        return Task.CompletedTask;
+    }
+}
